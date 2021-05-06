@@ -36,12 +36,12 @@ def saveInsertionSortedList(x):
 
 
 def saveCompletionTimes():
-    f = open("InsertionSortTimes.txt", "w")
+    f = open("sortingRecords/InsertionSortTimes.txt", "w")
     for i in range(0, 5):
         f.write(str(insertionSortTimes[i]))
         f.write("\n")
     f.close()
-    f = open("MergeSortTimes.txt", "w")
+    f = open("sortingRecords/MergeSortTimes.txt", "w")
     for i in range(0, 5):
         f.write(str(mergeSortTimes[i]))
         f.write("\n")
