@@ -1,6 +1,4 @@
 import numpy
-import dcst
-
 
 class Sort:
     def insertionSort(self, array, length):

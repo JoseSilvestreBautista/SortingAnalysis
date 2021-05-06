@@ -2,6 +2,7 @@ import math
 import timeit
 import numpy
 import random
+import os
 from Sort import Sort
 import matplotlib.pyplot as plt
 from scipy.interpolate import make_interp_spline
@@ -12,7 +13,8 @@ insertionSortTimes = []
 
 
 def howManyRandomNumber(x):
-    f = open("keys" + str(x) + ".txt", "w")
+    completeName = os.path.join("randomKeysUsed", "keys" + str(x) + ".txt")
+    f = open(completeName, "w")
     for y in range(0, x):
         array[y] = random.randint(0, 100000)
         f.write(str(array[y]) + "\n")
@@ -20,7 +22,8 @@ def howManyRandomNumber(x):
 
 
 def saveMergeSortedList(x):
-    f = open("mergeSortedKeys" + str(x) + ".txt", "w")
+    completeName = os.path.join("mergSortResults", "mergeSortedKeys" + str(x) + ".txt")
+    f = open(completeName, "w")
     for y in range(0, x):
         f.write(str(array[y]))
         f.write("\n")
@@ -28,7 +31,8 @@ def saveMergeSortedList(x):
 
 
 def saveInsertionSortedList(x):
-    f = open("InsertionSortedKeys" + str(x) + ".txt", "w")
+    completeName = os.path.join("insertionSortedResults", "InsertionSortedKeys" + str(x) + ".txt")
+    f = open(completeName, "w")
     for y in range(0, x):
         f.write(str(array1[y]))
         f.write("\n")
@@ -49,7 +53,7 @@ def saveCompletionTimes():
 
 
 def loadRandomKeys(x):
-    f = open("keys" + str(x) + ".txt", "r")
+    f = open("randomKeysUsed/keys" + str(x) + ".txt", "r")
     for i in range(0, x):
         array1[i] = int(f.readline())
     f.close()
@@ -78,22 +82,21 @@ model2 = make_interp_spline(keys, insertionSortTimes)
 
 xs1 = numpy.linspace(100000, 3)
 ys1 = model1(xs1)
-xs2 = numpy.linspace(100000, 28)
+xs2 = numpy.linspace(100000, 1500)
 ys2 = model2(xs2)
 
 plt.ylim([0, 3])
 plt.title('MergeSort Times')
 plt.plot(xs1, ys1)
-plt.ylabel('Sort Complete Times')
+plt.ylabel('Sort Complete Times (Seconds)')
 plt.xlabel('Number of Keys')
 plt.xscale("log")
 plt.show()
 
-plt.ylim([0, 28])
-
+plt.ylim([0, 1500])
 plt.title('InsertionSort Times')
 plt.plot(xs2, ys2)
-plt.ylabel('Sort Complete Times')
+plt.ylabel('Sort Complete Times (Seconds)')
 plt.xlabel('Number of Keys')
 plt.xscale("log")
 plt.show()
