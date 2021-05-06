@@ -1,4 +1,4 @@
 # SortingAnalysis
 
 ## Results
-![Sample Image](insertionSortTimePlot.png)
+![Sample Image](https://github.com/JoseSilvestreBautista/SortingAnalysis/blob/master/images/insertionSortTimePlot.png)
